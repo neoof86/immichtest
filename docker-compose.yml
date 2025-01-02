@@ -108,29 +108,6 @@ services:
     networks:
       traefik:
   
-  immich-prometheus:
-    container_name: immich_prometheus
-    ports:
-    # this exposes the default port for Prometheus so you can interact with it
-      - 9090:9090
-    image: prom/prometheus
-    volumes:
-    # the Prometheus configuration file - a barebones one is provided to get started
-    - ./prometheus.yml:/etc/prometheus/prometheus.yml
-    # a named volume defined in the bottom of the Compose file; it can also be a mounted folder
-    - prometheus-data:/prometheus
-    networks:
-      traefik:
-    
-  immich-grafana:
-    container_name: immich_grafana
-    command: ['./run.sh', '-disable-reporting'] # this is to disable Grafana's telemetry
-    image: grafana/grafana
-    volumes:
-    # stores your pretty dashboards and panels
-    - grafana-data:/var/lib/grafana
-    networks:
-      traefik:
 
 volumes:
   model-cache:
