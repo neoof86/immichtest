@@ -62,12 +62,7 @@ services:
     restart: always
     healthcheck:
       disable: false
-      
-    volumes:
-    - model-cache:/cache
-    env_file:
-    - .env
-    restart: always
+
     networks:
       traefik:
 
